@@ -228,6 +228,8 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.6.2/js/bootstrap-select.min.js"></script>
 <script type="text/javascript">
   $(document).ready(function() {
+    $('#state').attr('disabled', true);
+
     $('#register-form').bootstrapValidator({
 
       excluded: ':disabled',
@@ -405,7 +407,7 @@ jQuery.ajax({
 });
 </script>
 <script>
-  $(document).ready(function(){
+  $(document).ready(function(){    
     $("#register-form").submit(function(){
       var get_data=$("#register-form").serialize();
       $.ajax({
@@ -419,6 +421,7 @@ jQuery.ajax({
       });
       return false;
     });
+
     $("select#switchid").change(function(){
         var switchid =  $("select#switchid option:selected").attr('value');
         // alert(switchid);
@@ -431,8 +434,8 @@ jQuery.ajax({
           if ($("#state").is(':disabled'))
             $("#state").prop("disabled", false);
 
-          $("#state").html( "" );
-          $("#city").html( "" );
+          $("#state").html("");
+          $("#city").html("");
 
             $.ajax({
               type: "POST",
@@ -444,7 +447,7 @@ jQuery.ajax({
                 $('#state').html('<img src="loader.gif" alt="" width="24" height="24">');
               },
               success: function(html) {
-                $("#state").html( html );
+                $("#state").html(html);
               }
             });
         }
