@@ -50,7 +50,11 @@
   /* Don't add a check icon to the radio */
   input[type="radio"].styled:checked+label:after {
     font-family: 'FontAwesome';
-    content: '';
+    content: '';    
+  }
+  .right-inner-addon {
+      position: relative;
+      margin-right: -25px;
   }
 </style>
 <style>
@@ -138,25 +142,27 @@
           </fieldset>
           <br>
           <div class="form-group col-md-6">
-            <div class="input-group">
+            <div class="input-group right-inner-addon">
               <div class="input-group-addon">
                 <span class="glyphicon glyphicon-cog"></span>
               </div>
-              <select class="form-control" placeholder="Switch IP" id="switchid" name="switchid"> <option class="form-control" value="" selected>Please Role Code</option><?php
-                mysql_connect('localhost', 'root', '');
-                mysql_select_db('multi-admin');
-                $sql = "SELECT distinct `rr_rolecode` FROM `role_rights`";
-                $result = mysql_query($sql);
-                while ($row = mysql_fetch_array($result)) {
-                  echo "<option value='" . $row['rr_rolecode'] . "'>" . $row['rr_rolecode'] . "</option>";
-                }
-                echo "</select>";
+              <select class="form-control" placeholder="Switch IP" id="switchid" name="switchid"> 
+              <option class="form-control" value="" selected>Please Role Code</option>
+                <?php
+                  mysql_connect('localhost', 'root', '');
+                  mysql_select_db('multi-admin');
+                  $sql = "SELECT distinct `rr_rolecode` FROM `role_rights`";
+                  $result = mysql_query($sql);
+                  while ($row = mysql_fetch_array($result)) {
+                    echo "<option value='" . $row['rr_rolecode'] . "'>" . $row['rr_rolecode'] . "</option>";
+                  }
+                  echo "</select>";
                 ?>
               </div>
 
             </div>
             <div class="form-group col-md-6">
-              <div class="input-group">
+              <div class="input-group right-inner-addon">
                 <div class="input-group-addon">
                   <span class="glyphicon glyphicon-cog"></span>
                 </div>
@@ -171,7 +177,7 @@
           <div class="clearfix">
             <style type="text/css">
               #bootstrapSelectForm .selectContainer .form-control-feedback {
-                /* Adjust feedback icon position */
+                 Adjust feedback icon position 
                 right: -15px;
               }
             </style>
@@ -442,7 +448,7 @@ jQuery.ajax({
               url: "fetch_state.php",
               data: "switchid="+switchid,
               cache: false,
-              async:true,
+              async: true,
               beforeSend: function () {
                 $('#state').html('<img src="loader.gif" alt="" width="24" height="24">');
               },
